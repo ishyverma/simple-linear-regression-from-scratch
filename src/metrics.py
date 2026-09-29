@@ -29,3 +29,27 @@ def mse(y_true, y_pred):
     y_true, y_pred = _validate_inputs(y_true, y_pred)
 
     return np.mean((y_true - y_pred) ** 2)
+
+def rmse(y_true, y_pred):
+    """
+    Root Mean Squared Error
+    """
+
+    y_true, y_pred = _validate_inputs(y_true, y_pred)
+
+    return np.sqrt(mse(y_true, y_pred))
+
+def r2_score(y_true, y_pred):
+    """
+    R² Score
+    """
+
+    y_true, y_pred = _validate_inputs(y_true, y_pred)
+
+    ss_res = np.sum((y_true - y_pred) ** 2)
+    ss_tot = np.sum((y_true - np.mean(y_true)) ** 2)
+
+    if ss_tot == 0:
+        raise ValueError("R² is undefined when y_true has zero variance")
+    
+    return 1 - (ss_res / ss_tot)
