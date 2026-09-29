@@ -47,8 +47,8 @@ class SimpleLinearRegression:
         if denominator == 0:
             raise ValueError("The feature must contain more than one unique value")
 
-        self.coef = numerator / denominator
-        self.intercept_ = y_mean - self.coef * x_mean
+        self.coef_ = numerator / denominator
+        self.intercept_ = y_mean - self.coef_ * x_mean
 
         self.is_fitted_ = True
     
